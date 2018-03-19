@@ -7,6 +7,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+// TODO:
+
 public class MainActivity extends AppCompatActivity {
 
     private Button btn11, btn12, btn13, btn14, btn15, btn16, btn17, btn18, btn19,
@@ -18,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
             btn71, btn72, btn73, btn74, btn75, btn76, btn77, btn78, btn79,
             btn81, btn82, btn83, btn84, btn85, btn86, btn87, btn88, btn89,
             btn91, btn92, btn93, btn94, btn95, btn96, btn97, btn98, btn99;
+
     private ImageButton btnReset ,btnSign;
     private EditText etBombs;
     private int sign;    //1 = bombs. 0 = flag.
@@ -127,22 +130,30 @@ public class MainActivity extends AppCompatActivity {
         for(int i=0;i<15;i++) {
             Bombs[i]=new BombPlace(20,20);
         }
-        while (counter<=15){
+
+        // bomb creation on board
+        boolean b = true;
+        while (counter<=15 ){
             for(int i=0;i<15;i++) {
-                if (x == Bombs[i].getX() && y == Bombs[i].getY())
+                if (x == Bombs[counter].getX() && y == Bombs[counter].getY())
                 {
-
+                    b = false;
                 }
-
             }
             x = (int)(Math.random()*8);
             y = (int)(Math.random()*8);
             Bombs[counter] = new BombPlace (x,y);
-            counter++;
-
-
-
+            if (b == false)
+                continue;
+            else
+                counter++;
         }
+
+
+        // TODO: Create numbers,empty, bombs on board
+            // if cell is bomb then btn[x,y].setTag("X")
+            // if cell is not bomb but beside there are bombs setTag of button with the number of bombs
+            // if cell has no bombs beside just set the tag to " "
 
     }
 
